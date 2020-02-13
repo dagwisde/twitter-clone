@@ -18,7 +18,7 @@
     </header>
     <!-- Form -->
     <section class="container is-fluid">
-      <form action="/submit-form" method="POST" class="form">
+      <form action="/userpost" method="post" class="form">
         <div class="field">
           <label class="label" for="userName">Your name</label>
           <div class="control">
@@ -26,7 +26,8 @@
               class="input"
               type="text"
               placeholder="Username"
-              id="userName"
+              name="userName"
+              id="nameInput"
             />
           </div>
         </div>
@@ -36,7 +37,8 @@
             <textarea
               class="textarea"
               placeholder="E.g. write about your day!"
-              id="userPost"
+              name="userMessage"
+              id="messageInput"
             ></textarea>
           </div>
         </div>

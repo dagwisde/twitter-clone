@@ -28,6 +28,10 @@ form.addEventListener("submit", event => {
   tweetList.insertAdjacentHTML(
     "beforeend",
     `<div class="list-item">
+    <figure class="image is-128x128">
+  <img src="https://robohash.org/${username}.png?">
+</figure>
+   
     <h4 class="title is-4">${username}</h4>
     <h5 class="subtitle is-5">${userMessage}</h5>
     </div>`

@@ -2,6 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { check, validationResult } = require("express-validator");
 
 const app = express();
 
@@ -22,6 +23,8 @@ app.post("/userpost", (req, res) => {
 });
 
 /* Listen */
-app.listen(3000, () => {
-  console.log("Listening");
+const port = 3000;
+
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
 });

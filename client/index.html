@@ -15,47 +15,55 @@
     <!-- Header -->
     <header class="header level-item has-text-centered">
       <h1 class="title is-1">Twitter</h1>
+      <!-- End of header -->
     </header>
     <!-- Form -->
-    <section class="container is-fluid">
-      <form action="/userpost" method="post" class="form">
-        <div class="field">
-          <label class="label" for="userName">Your name</label>
-          <div class="control">
-            <input
-              class="input"
-              type="text"
-              placeholder="Username"
-              name="userName"
-              id="nameInput"
-            />
+    <section class="section">
+      <div class="container is-fluid">
+        <form action="/userpost" method="post" class="form">
+          <div class="field">
+            <label class="label" for="userName">Your name</label>
+            <div class="control">
+              <input
+                class="input "
+                type="text"
+                placeholder="Username"
+                name="userName"
+                id="nameInput"
+              />
+            </div>
           </div>
-        </div>
-        <div class="field">
-          <label class="label">Your post</label>
-          <div class="control">
-            <textarea
-              class="textarea"
-              placeholder="E.g. write about your day!"
-              name="userMessage"
-              id="messageInput"
-            ></textarea>
+          <div class="field">
+            <label class="label">Your post</label>
+            <div class="control">
+              <textarea
+                class="textarea"
+                placeholder="E.g. write about your day!"
+                name="userMessage"
+                id="messageInput"
+              ></textarea>
+            </div>
           </div>
-        </div>
-        <div class="field is-grouped">
-          <div class="control">
-            <button type="submit" id="buttonSubmit" class="button is-link">
-              Submit
-            </button>
+          <div class="field is-grouped">
+            <div class="control">
+              <button type="submit" id="buttonSubmit" class="button is-link">
+                Submit
+              </button>
+            </div>
+            <div class="control">
+              <button class="button is-link is-light" id="buttonClear">
+                Clear
+              </button>
+            </div>
           </div>
-          <div class="control">
-            <button class="button is-link is-light" id="buttonClear">
-              Clear
-            </button>
-          </div>
-        </div>
-      </form>
+          <!-- End of form -->
+        </form>
+      </div>
     </section>
+    <!-- Tweets -->
+    <div class="container">
+      <div class="list"></div>
+    </div>
     <!-- Scripts -->
     <script src="client.js"></script>
   </body>

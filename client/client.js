@@ -10,10 +10,10 @@ form.addEventListener("submit", event => {
   event.preventDefault();
 
   const formData = new FormData(form);
-  const username = formData.get("userName");
+  const userName = formData.get("userName");
   const userMessage = formData.get("userMessage");
   const tweet = {
-    username,
+    userName,
     userMessage
   };
 
@@ -28,13 +28,13 @@ form.addEventListener("submit", event => {
   tweetList.insertAdjacentHTML(
     "beforeend",
     `<div class="list-item">
-    <figure class="image is-128x128">
-  <img src="https://robohash.org/${username}.png?">
-</figure>
-   
-    <h4 class="title is-4">${username}</h4>
-    <h5 class="subtitle is-5">${userMessage}</h5>
-    </div>`
+      <figure class="image is-64x64">
+    <img class="is-rounded" src="https://robohash.org/${userName}.png?bgset=bg1">
+  </figure>
+
+      <h6 class="title is-6">${userName}</h6>
+      <h5 class="subtitle is-5">${userMessage}</h5>
+      </div>`
   );
 
   messageInput.value = "";

@@ -1,13 +1,20 @@
 /*  Select Elements */
+
+// Form and inputs
 const form = document.querySelector(".form");
-const buttonSubmit = document.querySelector("#buttonSubmit");
 const messageInput = document.querySelector("#messageInput");
 const nameInput = document.querySelector("#nameInput");
-const POST_URL = "http://localhost:3000/userpost";
+const buttonSubmit = document.querySelector("#buttonSubmit");
+const charCounter = document.querySelector(".charCounter");
+// Tweets
 const tweetList = document.querySelector(".list");
+// error messages
 const tweetError = document.querySelector(".tweetError");
 const nameError = document.querySelector(".nameError");
+// Paths
+const POST_URL = "http://localhost:3000/userpost";
 
+// Listen for form submit
 form.addEventListener("submit", event => {
   event.preventDefault();
 
@@ -60,4 +67,16 @@ form.addEventListener("submit", event => {
     messageInput.value = "";
     nameInput.value = "";
   }
+});
+
+// Character count
+messageInput.addEventListener("keydown", event => {
+  const target = event.currentTarget;
+  // Input's maxLength attribute
+  const maxLength = target.getAttribute("maxLength");
+  // Current char count
+  const currentLength = target.value.length;
+
+  // Render remaining characters
+  charCounter.textContent = `${maxLength - currentLength} characters left`;
 });

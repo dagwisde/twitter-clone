@@ -3,6 +3,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { check, validationResult } = require("express-validator");
+const monk = require("monk");
+
+// Create database
+const db = monk("localhost:27017/twitter");
+const tweets = db.get("tweets");
+
+db.then(() => {
+  console.log("Connected correctly to the server!");
+});
 
 const app = express();
 
@@ -31,8 +40,14 @@ app.post("/userpost", (req, res) => {
   if (isValid(req.body)) {
     const tweet = {
       userName: req.body.userName.toString(),
-      userMessage: req.body.userMessage.toString()
+      userMessage: req.body.userMessage.toString(),
+      created: new Date()
     };
+
+    tweets.insert(tweet).then(createdTweet => {
+      res.json(createdTweet);
+    });
+
     console.log(tweet);
   } else {
     res.status(422);

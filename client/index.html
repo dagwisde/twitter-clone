@@ -23,14 +23,18 @@
         <form action="/userpost" method="post" class="form">
           <div class="field">
             <label class="label" for="userName">Your name</label>
-            <div class="control">
+            <div class="control has-icons-left">
               <input
-                class="input "
+                class="input"
                 type="text"
                 placeholder="Username"
                 name="userName"
                 id="nameInput"
               />
+              <p class="help is-danger nameError">You need a username!</p>
+              <span class="icon is-small is-left">
+                <i class="far fa-user"></i>
+              </span>
             </div>
           </div>
           <div class="field">
@@ -43,8 +47,10 @@
                 id="messageInput"
                 maxlength="280"
               ></textarea>
+              <p class="help is-danger tweetError">Your tweet can't be empty</p>
             </div>
           </div>
+
           <div class="field is-grouped">
             <div class="control">
               <button type="submit" id="buttonSubmit" class="button is-link">
@@ -62,5 +68,9 @@
     </div>
     <!-- Scripts -->
     <script src="client.js"></script>
+    <script
+      src="https://kit.fontawesome.com/b34c6460ce.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

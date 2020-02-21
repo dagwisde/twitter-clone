@@ -1,3 +1,8 @@
 .header {
   margin: 1em;
 }
+
+.nameError,
+.tweetError {
+  display: none;
+}

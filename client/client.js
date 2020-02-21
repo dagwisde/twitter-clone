@@ -51,6 +51,9 @@ form.addEventListener("submit", event => {
     nameError.style.display = "none";
     tweetError.style.display = "none";
 
+    // Timestamp
+    let date = new Date();
+
     // Render tweet to page if inputs are not empty
     tweetList.insertAdjacentHTML(
       "beforeend",
@@ -61,6 +64,7 @@ form.addEventListener("submit", event => {
     
           <h6 class="title is-5">${userName}</h6>
           <h5 class="subtitle is-6">${userMessage}</h5>
+          <p class="is-italic">${date.toUTCString()}</p>
           </div>`
     );
     // Reset input after submit

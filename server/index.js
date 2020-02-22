@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/tweets", (req, res) => {
-  tweets.find().then(tweets => {
+  tweets.find({}, { sort: { created: -1 } }).then(tweets => {
     res.json(tweets);
   });
 });

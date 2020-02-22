@@ -91,6 +91,7 @@ messageInput.addEventListener("keydown", event => {
   charCounter.textContent = `${maxLength - currentLength} characters left`;
 });
 
+// Fetch and render all tweets in the database
 function listTweets() {
   fetch(POST_URL)
     .then(res => res.json())

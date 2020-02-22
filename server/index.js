@@ -9,6 +9,10 @@ const monk = require("monk");
 const db = monk("localhost:27017/twitter");
 const tweets = db.get("tweets");
 
+db.then(() => {
+  console.log("Connected correctly to server");
+});
+
 const app = express();
 
 /* Middleware */
@@ -29,6 +33,7 @@ app.get("/tweets", (req, res) => {
   });
 });
 
+// Check if tweets are valid
 function isValid(tweet) {
   return (
     tweet.userName &&
@@ -38,7 +43,7 @@ function isValid(tweet) {
   );
 }
 
-app.post("/userpost", (req, res) => {
+app.post("/tweets", (req, res) => {
   if (isValid(req.body)) {
     const tweet = {
       userName: req.body.userName.toString(),

@@ -12,7 +12,10 @@ const tweetList = document.querySelector(".list");
 const tweetError = document.querySelector(".tweetError");
 const nameError = document.querySelector(".nameError");
 // Paths
-const POST_URL = "http://localhost:3000/userpost";
+const POST_URL = "http://localhost:3000/tweets";
+
+// Render tweets from db
+listTweets();
 
 // Listen for form submit
 form.addEventListener("submit", event => {
@@ -87,3 +90,25 @@ messageInput.addEventListener("keydown", event => {
   // Render remaining characters
   charCounter.textContent = `${maxLength - currentLength} characters left`;
 });
+
+function listTweets() {
+  fetch(POST_URL)
+    .then(res => res.json())
+    .then(tweets => {
+      console.log(tweets);
+      tweets.forEach(tweet => {
+        tweetList.insertAdjacentHTML(
+          "beforeend",
+          `<div class="control list-item has-icons-right">
+          <figure class="image is-64x64">
+        <img class="is-rounded" src="https://robohash.org/${tweet.userName}.png?bgset=bg1">
+      </figure>
+    
+          <h6 class="title is-5">${tweet.userName}</h6>
+          <h5 class="subtitle is-6">${tweet.userMessage}</h5>
+          <p class="is-italic">${tweet.created}</p>
+          </div>`
+        );
+      });
+    });
+}

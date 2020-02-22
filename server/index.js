@@ -9,10 +9,6 @@ const monk = require("monk");
 const db = monk("localhost:27017/twitter");
 const tweets = db.get("tweets");
 
-db.then(() => {
-  console.log("Connected correctly to the server!");
-});
-
 const app = express();
 
 /* Middleware */
@@ -24,6 +20,12 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.json({
     message: "Hello!"
+  });
+});
+
+app.get("/tweets", (req, res) => {
+  tweets.find().then(tweets => {
+    res.json(tweets);
   });
 });
 

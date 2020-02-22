@@ -34,7 +34,11 @@ form.addEventListener("submit", event => {
     headers: {
       "content-type": "application/json"
     }
-  });
+  })
+    .then(res => res.json())
+    .then(createdTweet => {
+      console.log(createdTweet);
+    });
 
   // Validate input
   if (!messageInput.value) {
@@ -68,8 +72,7 @@ form.addEventListener("submit", event => {
           </div>`
     );
     // Reset input after submit
-    messageInput.value = "";
-    nameInput.value = "";
+    form.reset();
   }
 });
 

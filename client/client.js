@@ -41,7 +41,6 @@ form.addEventListener("submit", event => {
   })
     .then(res => res.json())
     .then(createdTweet => {
-      // console.log(createdTweet);
     });
 
   // Validate input

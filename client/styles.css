@@ -2,6 +2,18 @@
   margin: 1em;
 }
 
+.list {
+  min-width: 50%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form {
+  min-width: 50%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .nameError,
 .tweetError {
   display: none;

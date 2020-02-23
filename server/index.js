@@ -4,10 +4,14 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { check, validationResult } = require("express-validator");
 const monk = require("monk");
+const Filter = require("bad-words");
 
 // Create database
 const db = monk("localhost:27017/twitter");
 const tweets = db.get("tweets");
+
+// Profanity filter
+const filter = new Filter();
 
 db.then(() => {
   console.log("Connected correctly to server");
@@ -46,8 +50,8 @@ function isValid(tweet) {
 app.post("/tweets", (req, res) => {
   if (isValid(req.body)) {
     const tweet = {
-      userName: req.body.userName.toString(),
-      userMessage: req.body.userMessage.toString(),
+      userName: filter.clean(req.body.userName.toString()),
+      userMessage: filter.clean(req.body.userMessage.toString()),
       created: new Date()
     };
 

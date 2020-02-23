@@ -6,6 +6,7 @@ const messageInput = document.querySelector("#messageInput");
 const nameInput = document.querySelector("#nameInput");
 const buttonSubmit = document.querySelector("#buttonSubmit");
 const charCounter = document.querySelector(".charCounter");
+
 // Tweets
 const tweetList = document.querySelector(".list");
 // error messages
@@ -40,7 +41,7 @@ form.addEventListener("submit", event => {
   })
     .then(res => res.json())
     .then(createdTweet => {
-      console.log(createdTweet);
+      // console.log(createdTweet);
     });
 
   // Validate input
@@ -96,19 +97,27 @@ function listTweets() {
   fetch(POST_URL)
     .then(res => res.json())
     .then(tweets => {
-      console.log(tweets);
       tweets.forEach(tweet => {
         tweetList.insertAdjacentHTML(
           "beforeend",
-          `<div class="control list-item has-icons-right">
-          <figure class="image is-64x64">
-        <img class="is-rounded" src="https://robohash.org/${tweet.userName}.png?bgset=bg1">
-      </figure>
-    
-          <h6 class="title is-5">${tweet.userName}</h6>
-          <h5 class="subtitle is-6">${tweet.userMessage}</h5>
-          <p class="is-italic">${tweet.created}</p>
-          </div>`
+          `
+          <div class="control list-item level">
+  <div class="level-right is-mobile">
+ 
+ </div>
+  <figure class="image is-64x64">
+    <img
+      class="is-rounded"
+      src="https://robohash.org/${tweet.userName}.png?bgset=bg1"
+    />
+  </figure>
+
+  <h6 class="title is-5">${tweet.userName}</h6>
+  <h5 class="subtitle is-6">${tweet.userMessage}</h5>
+  <p class="is-italic">${tweet.created}</p>
+</div>
+
+          `
         );
       });
     });

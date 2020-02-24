@@ -8,7 +8,7 @@ const Filter = require("bad-words");
 const rateLimit = require("express-rate-limit");
 
 // Create database
-const db = monk("localhost:27017/twitter");
+const db = monk(process.env.MONGODB || "localhost:27017/twitter");
 const tweets = db.get("tweets");
 // Profanity filter
 const filter = new Filter();

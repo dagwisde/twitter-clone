@@ -1,0 +1,7 @@
+{
+  "name": "twitter-clone",
+  "version": 2,
+  "env": {
+    "MONGODB": "@mongo-uri"
+  }
+}

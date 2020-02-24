@@ -2,8 +2,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { check, validationResult } = require("express-validator");
 const monk = require("monk");
+const helmet = require("helmet");
 const Filter = require("bad-words");
 const rateLimit = require("express-rate-limit");
 
@@ -19,6 +19,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(helmet());
 
 /* Routes */
 app.get("/", (req, res) => {

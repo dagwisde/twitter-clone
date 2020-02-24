@@ -5,17 +5,13 @@ const cors = require("cors");
 const { check, validationResult } = require("express-validator");
 const monk = require("monk");
 const Filter = require("bad-words");
+const rateLimit = require("express-rate-limit");
 
 // Create database
 const db = monk("localhost:27017/twitter");
 const tweets = db.get("tweets");
-
 // Profanity filter
 const filter = new Filter();
-
-db.then(() => {
-  console.log("Connected correctly to server");
-});
 
 const app = express();
 
@@ -46,6 +42,13 @@ function isValid(tweet) {
     tweet.userMessage.toString().trim() !== ""
   );
 }
+
+app.use(
+  rateLimit({
+    windowMs: 15 * 1000, // 15 seconds
+    max: 1
+  })
+);
 
 app.post("/tweets", (req, res) => {
   if (isValid(req.body)) {

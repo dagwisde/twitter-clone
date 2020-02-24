@@ -2,12 +2,7 @@
   margin: 1em;
 }
 
-.list {
-  min-width: 50%;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
+.list,
 .form {
   min-width: 50%;
   max-width: 400px;

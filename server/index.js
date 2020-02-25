@@ -8,7 +8,7 @@ const Filter = require("bad-words");
 const rateLimit = require("express-rate-limit");
 
 // Create database
-const db = monk(process.env.MONGODB_URI || "localhost:27017/twitter");
+const db = monk(process.env.MONGODB_URL || "localhost:27017/twitter");
 const tweets = db.get("tweets");
 // Profanity filter
 const filter = new Filter();
@@ -16,6 +16,7 @@ const filter = new Filter();
 const app = express();
 
 /* Middleware */
+app.use(express.static("client"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -73,7 +74,7 @@ app.post("/tweets", (req, res) => {
 });
 
 /* Listen */
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);

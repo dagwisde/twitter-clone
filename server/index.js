@@ -9,7 +9,7 @@ const rateLimit = require("express-rate-limit");
 const path = require("path");
 
 // Create database
-const db = monk(MONGODB_URL || "localhost:27017/twitter");
+const db = monk(process.env.MONGODB_URL || "localhost:27017/twitter");
 
 const tweets = db.get("tweets");
 // Profanity filter

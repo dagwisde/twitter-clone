@@ -74,8 +74,8 @@ app.post("/tweets", (req, res) => {
 });
 
 /* Listen */
-const port = process.env.PORT || 3000;
+const port = 3000;
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Listening on port: ${port}`);
 });

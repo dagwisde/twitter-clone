@@ -6,6 +6,7 @@ const monk = require("monk");
 const helmet = require("helmet");
 const Filter = require("bad-words");
 const rateLimit = require("express-rate-limit");
+const path = require("path");
 
 // Create database
 const db = monk(process.env.MONGODB_URL || "localhost:27017/twitter");
@@ -16,6 +17,7 @@ const filter = new Filter();
 const app = express();
 
 /* Middleware */
+app.use(express.static("client"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -23,9 +25,7 @@ app.use(helmet());
 
 /* Routes */
 app.get("/", (req, res) => {
-  res.json({
-    message: "Hello!"
-  });
+  res.sendFile(path.join(__dirname, "../client/"));
 });
 
 app.get("/tweets", (req, res) => {

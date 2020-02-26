@@ -40,8 +40,7 @@ form.addEventListener("submit", event => {
     }
   })
     .then(res => res.json())
-    .then(createdTweet => {
-    });
+    .then(createdTweet => {});
 
   // Validate input
   if (!messageInput.value) {

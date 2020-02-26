@@ -16,7 +16,6 @@ const filter = new Filter();
 const app = express();
 
 /* Middleware */
-app.use(express.static("client"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());

@@ -11,6 +11,10 @@ const path = require("path");
 // Create database
 const db = monk(process.env.MONGODB_URL || "localhost:27017/twitter");
 
+db.then(() => {
+  console.log(process.env.MONGODB_URL);
+});
+
 const tweets = db.get("tweets");
 // Profanity filter
 const filter = new Filter();

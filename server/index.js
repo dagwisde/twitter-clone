@@ -21,7 +21,15 @@ const filter = new Filter();
 
 const app = express();
 
+// Cors
+// cors origin URL - Allow inbound traffic from origin
+corsOptions = {
+  origin: "https://stafford-twitterclone.herokuapp.com/",
+  optionsSuccessStatus: 200
+};
+
 /* Middleware */
+app.use(cors(corsOptions));
 app.use(express.static("client"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

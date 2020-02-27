@@ -13,7 +13,7 @@ const tweetList = document.querySelector(".list");
 const tweetError = document.querySelector(".tweetError");
 const nameError = document.querySelector(".nameError");
 // Paths
-const POST_URL = "http://localhost:3000/tweets";
+const POST_URL = process.env.PORT || "http://localhost:3000/tweets";
 
 // Render tweets from db
 listTweets();

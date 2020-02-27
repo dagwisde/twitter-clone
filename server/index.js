@@ -9,10 +9,10 @@ const rateLimit = require("express-rate-limit");
 const path = require("path");
 
 // Create database
-const db = monk(process.env.MONGODB_URL || "localhost:27017/twitter");
+const db = monk(process.env.MONGODB_URI || "localhost:27017/twitter");
 
 db.then(() => {
-  console.log(process.env.MONGODB_URL);
+  console.log(process.env.MONGODB_URI);
 });
 
 const tweets = db.get("tweets");
@@ -21,15 +21,7 @@ const filter = new Filter();
 
 const app = express();
 
-// Cors
-// cors origin URL - Allow inbound traffic from origin
-corsOptions = {
-  origin: "https://stafford-twitterclone.herokuapp.com/",
-  optionsSuccessStatus: 200
-};
-
 /* Middleware */
-app.use(cors(corsOptions));
 app.use(express.static("client"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -1,6 +1,7 @@
 .now
-/node_modules
 npm-debug.log
 .DS_Store
 /*.env
 .vscode
+.gitignore
+node_modules

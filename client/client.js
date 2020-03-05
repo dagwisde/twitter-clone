@@ -20,6 +20,7 @@ listTweets();
 
 // Listen for form submit
 form.addEventListener("submit", event => {
+  XS;
   event.preventDefault();
 
   // Get form data
